@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300&family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@600&family=Source+Sans+Pro&display=swap');
+
+@keyframes goDown {
+    0%   {margin-top: 0px;}
+    50%  {margin-top: -20px;}
+    100% {margin-top: 0px;}
+}
+
+@keyframes goUp {
+    0%   {margin-top: 0px;}
+    50%  {margin-top: 20px;}
+    100% {margin-top: 0px;}
+}
+
+@keyframes appear {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+:root {
+    --bs-body-font-family: 'Mukta', sans-serif;
+}
+
+.input {
+    display: flex;
+    position: relative;
+    width: 100%;
+    align-items: center;
+}
+
+.input-field {
+    width: 100%;
+    border-radius: 50px;
+    padding: 10px 20px;
+    border: none;
+    transition: 0.2s;
+    box-shadow: inset 0 0 5px #a1a1a6
+}
+
+.input-field:focus {
+    outline: none;
+}
+
+.input-submit {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    margin: 12px;
+    border: none;
+    right: 0px;
+    background-color: transparent
+}
+
+td {
+    vertical-align: middle;
+}
+
+.td-svg {
+    text-align: center;
+}
+
+.album-img-container {
+    position: relative;
+    height: 75px;
+    width: 75px;
+}
+
+.album-img-container img {
+    height: 75px;
+    width: 75px;
+}
+
+td a svg {
+    font-size: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    opacity: 0;
+    color: rgb(255, 255, 255);
+}
+
+td svg {
+    opacity: 0;
+    font-size: 25px;
+}
+
+tr:hover img {
+    opacity: 0.6;
+}
+
+tr:hover a svg {
+    opacity: 1;
+}
+
+
+tr:hover svg {
+    opacity: 1;
+}
+
+.main-container {
+    margin-top: 65px;
+    animation-name: appear;
+    animation-duration: 1s;
+}
+
+.button-favourite {
+    color: white;
+    background: transparent;
+    border: white solid 2px;
+    border-radius: 15px;
+    transition: 0.4s;
+    font-size: 20px;
+    padding: 5px 8px 5px 8px
+}
+
+.active {
+    background-color: rgb(77, 77, 77);
+    box-shadow: 0 0 10px white;
+}
+
+.list-empty {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-top: 50px;
+    animation-name: appear;
+    animation-duration: 1s;
+}
+
+tr {
+    animation-name: appear;
+    animation-duration: 1s;
+}
+
+.spinner-svg {
+    color: white;
+}
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    gap: 0.5em;
+    font-size: 30px;
+}
+
+.down {
+    animation: goDown 0.8s ease infinite;
+}
+  
+.up {
+    animation: goUp 0.8s ease infinite;
+}
