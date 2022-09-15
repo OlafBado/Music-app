@@ -45,6 +45,7 @@ export interface AlbumProps {
     song: Song;
     favourites: string[];
     setFavourites: React.Dispatch<React.SetStateAction<string[]>>;
+    active: Boolean;
     }
 
 export interface MainProps {

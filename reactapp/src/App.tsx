@@ -16,8 +16,6 @@ const App: React.FC = () => {
   const [favourites, setFavourites] = useState<string[]>(JSON.parse(localStorage.getItem('favourites') || '[]'))
   const [active, setActive] = useState<Boolean>(false)
 
-  //a
-
   useEffect(() => {
     setTimeout(() => {
       fetchData().then(json => {

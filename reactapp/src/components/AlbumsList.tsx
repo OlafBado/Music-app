@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 
 const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProps) => {
 
-    const handleFavourites = (songs: Song[], favourites: string[], active: Boolean) => {
+    const handleFavourites = () => {
         if (active) {
             const newArray = songs.filter(song => favourites.includes(song.id.attributes["im:id"]))
             return newArray
@@ -20,7 +20,7 @@ const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProp
 
     return(
         <>
-            <Container className='text-white mt-5' id='abc'>
+            <Container className='text-white mt-5'>
                 <Table variant='dark' hover>
                     <thead>
                         <tr>
@@ -34,13 +34,14 @@ const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProp
                     </thead>
                     <tbody>
                         {
-                            handleFavourites(songs, favourites, active).map((song: Song) => {
+                            handleFavourites().map((song: Song) => {
                                 return (
                                     <Album
                                         key={song.id.attributes["im:id"]}
                                         song={song}
                                         favourites={favourites}
                                         setFavourites={setFavourites}
+                                        active={active}
                                     />
                                     )
                                 }

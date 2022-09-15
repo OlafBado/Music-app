@@ -2,21 +2,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons"
 import { faHeart } from "@fortawesome/free-regular-svg-icons"
 import { AlbumProps } from '../store'
+import { useState } from 'react'
 
-const Album = ({ song, favourites, setFavourites }: AlbumProps) => {
+const Album = ({ song, favourites, setFavourites, active }: AlbumProps) => {
 
+    const [hide,setHide] = useState<Boolean>(false)
+    
     const handleFavourites = (id: string) => {
-       if (favourites.includes(id)) {
-        const filteredArray = favourites.filter(fav => fav !== id)
-        setFavourites(filteredArray)
-       } else {
-        setFavourites([...favourites, id])
-       }
+        if (favourites.includes(id)) {
+            const filteredArray = favourites.filter(fav => fav !== id)
+            if (active) {
+                setHide(true)
+                setTimeout(() => setFavourites(filteredArray), 800)
+            } else {
+                setFavourites(filteredArray)
+            }
+        } else {
+            setFavourites([...favourites, id])
+        }
     }
 
     return (
-
-                <tr>
+                <tr className={active && hide ? 'act' : ''}>
                     <td>
                         <div className='album-img-container'>
                             <img alt='' src={song["im:image"][0].label}/>
@@ -42,7 +49,6 @@ const Album = ({ song, favourites, setFavourites }: AlbumProps) => {
                     </td>
                     <td className="d-none d-md-table-cell">{song["im:releaseDate"].attributes.label}</td>
                 </tr>
-
     )
 }
 

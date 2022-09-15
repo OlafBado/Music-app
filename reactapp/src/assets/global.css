@@ -22,6 +22,15 @@
     }
 }
 
+@keyframes hide {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 :root {
     --bs-body-font-family: 'Mukta', sans-serif;
 }
@@ -121,6 +130,10 @@ tr:hover svg {
     padding: 5px 8px 5px 8px
 }
 
+.button-favourite:hover {
+    transform: scale(1.1);
+}
+
 .active {
     background-color: rgb(77, 77, 77);
     box-shadow: 0 0 10px white;
@@ -158,4 +171,12 @@ tr {
   
 .up {
     animation: goUp 0.8s ease infinite;
+}
+
+/********************************************/
+
+.act {
+    animation-name: hide;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
 }
