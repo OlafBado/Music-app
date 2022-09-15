@@ -13,7 +13,7 @@ const Album = ({ song, favourites, setFavourites, active }: AlbumProps) => {
             const filteredArray = favourites.filter(fav => fav !== id)
             if (active) {
                 setHide(true)
-                setTimeout(() => setFavourites(filteredArray), 800)
+                setTimeout(() => setFavourites(filteredArray), 200)
             } else {
                 setFavourites(filteredArray)
             }
