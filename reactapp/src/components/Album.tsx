@@ -39,13 +39,27 @@ const Album = ({ song, favourites, setFavourites, active }: AlbumProps) => {
                     <td>{song["im:name"].label}</td>
                     <td>{song["im:artist"].label}</td>
                     <td className="d-none d-sm-table-cell">{song.category.attributes.label}</td>
-                    <td className='td-svg'>
+                    <td className='td-svg' data-testid="td-svg">
+                    {favourites.includes(song.id.attributes["im:id"]) ?
                         <FontAwesomeIcon
                             style={favourites.includes(song.id.attributes["im:id"]) ? {opacity: '1'} : {}}
                             onClick={() => handleFavourites(song.id.attributes["im:id"])}
-                            icon={favourites.includes(song.id.attributes["im:id"]) ? faHeartSolid : faHeart}
-                            data-testid="svgElement"
+                            icon={faHeartSolid}
+                            data-testid="svgSolidElement"
                         />
+                    
+                    :
+                    <FontAwesomeIcon
+                            style={favourites.includes(song.id.attributes["im:id"]) ? {opacity: '1'} : {}}
+                            onClick={() => handleFavourites(song.id.attributes["im:id"])}
+                            icon={faHeart}
+                            data-testid="svgElement"
+                            className='svgEmptyElement'
+                        />
+                    }
+
+
+
                     </td>
                     <td className="d-none d-md-table-cell">{song["im:releaseDate"].attributes.label}</td>
                 </tr>
