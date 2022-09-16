@@ -180,3 +180,14 @@ tr {
     animation-duration: 0.2s;
     animation-fill-mode: forwards;
 }
+
+th button {
+    background: transparent;
+    border: none;
+}
+
+th button svg {
+    color: rgb(178, 178, 178);
+    font-size: 18px;
+    margin-left: 5px;
+}
