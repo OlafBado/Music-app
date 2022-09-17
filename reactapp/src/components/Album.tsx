@@ -24,6 +24,7 @@ const Album = ({ song, favourites, setFavourites, active }: AlbumProps) => {
 
     return (
                 <tr className={active && hide ? 'act' : ''}>
+                    <td>{song.number}</td>
                     <td>
                         <div className='album-img-container'>
                             <img alt='' src={song["im:image"][0].label}/>

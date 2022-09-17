@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 import './assets/global.css'
 import { fetchData } from './api/axios'
 import { Data, Song } from './store';
+import { number } from './utils/mutate/number'
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState<Boolean>(true)
@@ -19,7 +20,8 @@ const App: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       fetchData().then(json => {
-        setSongs(json.entry)
+        const array = number(json.entry)
+        setSongs(array)
         return json
       }).then(json => {
         setSearchResults(json.entry)
@@ -27,6 +29,7 @@ const App: React.FC = () => {
       }).then(json => {
         setData(json)
         setLoading(false)
+        return json
       })
     }, 2000)
   }, [])

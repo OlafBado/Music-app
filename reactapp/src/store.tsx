@@ -32,6 +32,7 @@ export interface Song {
     ["im:name"]: LabeledItem;
     ["im:artist"]: LabeledItem;
     ["im:releaseDate"]: LabeledItem;
+    number?: number
     }
 
 export interface AlbumsListProps {

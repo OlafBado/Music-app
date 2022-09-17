@@ -7,12 +7,19 @@ import { useState } from 'react';
 import { albumsDescending, albumsAscending, artistDescending, artistAscending, categoryDescending, categoryAscending, dateDescending, dateAscending } from '../utils/sort/sort'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSort, faSortDown, faSortUp } from "@fortawesome/free-solid-svg-icons"
+import { animated, useTransition } from 'react-spring';
 
 const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProps) => {
     const [sortBy, setSortBy] = useState<String>('default')
+    const [isVisible, setIsVisible] = useState<Boolean>(false)
+    console.log(songs)
+    const transition = useTransition(isVisible, {
+        from: { x: -100, opacity: 0 },
+        enter: { x: 0, opacity: 1 },
+        leave: { x: -100, opacity: 0 }
+    })
 
     const handleFavourites = () => {
-        console.log(songs)
         
         if (active) {
             const favouriteArray = songs.filter(song => favourites.includes(song.id.attributes["im:id"]))
@@ -41,6 +48,11 @@ const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProp
             } else if (sortBy === 'date-ascending') {
                 const newArray = favouriteArray.sort(dateAscending)
                 return newArray
+            } else if (sortBy === 'reverse') {
+                const newArray = favouriteArray.reverse()
+                return newArray
+            } else {
+                return favouriteArray
             }
         }
 
@@ -71,6 +83,9 @@ const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProp
             } else if (sortBy === 'date-ascending') {
                 const newArray = arrayCopy.sort(dateAscending)
                 return newArray
+            } else if (sortBy === 'reverse') {
+                const newArray = arrayCopy.reverse()
+                return newArray
             }
         }
 
@@ -79,34 +94,43 @@ const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProp
     }
 
     const handleSortBy = (by: string) => {
-        if (by === 'reverse') {
-            if (sortBy === 'reverse') {
-                setSortBy('default')
-            } else {
-                setSortBy(by)
-            }
+        if (by === 'default') {
+            setSortBy(by)
+            setIsVisible(false)
         } else if (by === 'album-descending') {
+            setIsVisible(true)
             if (sortBy === 'album-descending') {
                 setSortBy('album-ascending')
             } else {
                 setSortBy(by)
             }
         } else if (by === 'artist-descending') {
+            setIsVisible(true)
             if (sortBy === 'artist-descending') {
                 setSortBy('artist-ascending')
             } else {
                 setSortBy(by)
             }
         } else if (by === 'category-descending') {
+            setIsVisible(true)
             if (sortBy === 'category-descending') {
                 setSortBy('category-ascending')
             } else {
                 setSortBy(by)
             }
         } else if (by === 'date-descending') {
+            setIsVisible(true)
             if (sortBy === 'date-descending') {
                 setSortBy('date-ascending')
             } else {
+                setSortBy(by)
+            }
+        } else if (by === 'reverse') {
+            if (sortBy === 'reverse') {
+                setIsVisible(false)
+                setSortBy('default')
+            } else {
+                setIsVisible(true)
                 setSortBy(by)
             }
         }
@@ -121,7 +145,24 @@ const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProp
                 <Table variant='dark' hover>
                     <thead>
                         <tr>
-                            <th style={{width: '10%'}}></th>
+                            <th style={{minWidth: '55px' }}>
+                                #
+                                <button onClick={() => handleSortBy('reverse')}>
+                                    <FontAwesomeIcon icon={
+                                            sortBy === 'default' 
+                                            ?
+                                            faSortDown
+                                            :
+                                            faSortUp
+                                        } 
+                                    />
+                                </button>
+                            </th>
+                            <th className='but' style={{minWidth: '10%'}}>
+                                {transition((style, item) => 
+                                    item ? <animated.button onClick={() => handleSortBy('default')} className='reset-button' style={style}>Reset</animated.button> : ''
+                                )}
+                            </th>
                             <th style={{width: '25%'}}>
                                 Album
                                 <button onClick={() => handleSortBy('album-descending')}>
