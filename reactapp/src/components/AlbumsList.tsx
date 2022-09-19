@@ -210,7 +210,8 @@ const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProp
                                             faSortDown
                                             :
                                             faSort
-                                        } 
+                                        }
+                                        data-testid="svgCategory"
                                     />
                                 </button>
                             </th>

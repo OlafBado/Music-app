@@ -1,7 +1,7 @@
 import cypress from "cypress"
 
-describe('empty spec', { scrollBehavior: false }, () => {
-  it('passes', () => {
+describe('music', { scrollBehavior: false }, () => {
+  it('like functionality', () => {
     cy.visit('http://localhost:3000')
     cy.findByPlaceholderText(/search albums/i).type('rock', { force: true })
     cy.findByRole('row', { name: /the mars volta the mars volta rock/i }).children('.td-svg').click()
