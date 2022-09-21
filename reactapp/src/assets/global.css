@@ -2,15 +2,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@600&family=Source+Sans+Pro&display=swap');
 
 @keyframes goDown {
-    0%   {margin-top: 0px;}
-    50%  {margin-top: -20px;}
-    100% {margin-top: 0px;}
+    0%   {
+        margin-top: 0px
+    }
+    50%  {
+        margin-top: -20px
+    }
+    100% {
+        margin-top: 0px
+    }
 }
 
 @keyframes goUp {
-    0%   {margin-top: 0px;}
-    50%  {margin-top: 20px;}
-    100% {margin-top: 0px;}
+    0%   {
+        margin-top: 0px
+    }
+    50%  {
+        margin-top: 20px
+    }
+    100% {
+        margin-top: 0px
+    }
 }
 
 @keyframes appear {
@@ -172,8 +184,6 @@ tr {
 .up {
     animation: goUp 0.8s ease infinite;
 }
-
-/********************************************/
 
 .act {
     animation-name: hide;

@@ -11,8 +11,6 @@ const Navbar = ({ logo, uri, active, setActive }: NavbarProps) => {
         }
     }
 
-    const favourites = ['1634040492', '1575539213', '2414']
-
     return (
             <NavbarBS fixed='top' bg="dark" variant="dark">
         <Container>

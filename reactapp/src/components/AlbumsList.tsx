@@ -2,7 +2,6 @@ import Album from './Album'
 import { Container } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import { AlbumsListProps, Song } from '../store';
-import ReactDOM from 'react-dom';
 import { useState } from 'react';
 import { albumsDescending, albumsAscending, artistDescending, artistAscending, categoryDescending, categoryAscending, dateDescending, dateAscending } from '../utils/sort/sort'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -12,11 +11,11 @@ import { animated, useTransition } from 'react-spring';
 const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProps) => {
     const [sortBy, setSortBy] = useState<String>('default')
     const [isVisible, setIsVisible] = useState<Boolean>(false)
-    console.log(songs)
+
     const transition = useTransition(isVisible, {
-        from: { x: -100, opacity: 0 },
-        enter: { x: 0, opacity: 1 },
-        leave: { x: -100, opacity: 0 }
+        from: {  y:-80, opacity: 0 },
+        enter: { y:0, opacity: 1 },
+        leave: { y:-80, opacity: 0 }
     })
 
     const handleFavourites = () => {
@@ -89,7 +88,6 @@ const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProp
             }
         }
 
-        // default behavior
         return songs 
     }
 

@@ -8,5 +8,4 @@ export const number = (songs: Song[]) => {
     })
 
     return numberedObjectsArray
-
 }

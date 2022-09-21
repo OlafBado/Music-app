@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
-import { SearchBarProps, Song } from '../store'
+import { SearchBarProps } from '../store'
 
 const SearchBar = ({ songs, setSearchResults }: SearchBarProps) => {
     const handleSubmit = (e: React.FormEvent) => e.preventDefault()

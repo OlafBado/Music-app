@@ -12,7 +12,7 @@ test('render table', () => {
 test('render column headers', () => {
     render(<AlbumsList songs={mockedSongs} favourites={mockedFavourites} setFavourites={mockedFunction} active={false}/>)
     const thElement = screen.getAllByRole('columnheader')
-    expect(thElement).toHaveLength(6)
+    expect(thElement).toHaveLength(7)
 })
 
 test('render at least one row', () => {
