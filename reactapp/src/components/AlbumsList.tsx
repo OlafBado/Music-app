@@ -195,7 +195,7 @@ const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProp
                                     />
                                 </button>
                             </th>
-                            <th style={{width: '15%'}} className="d-none d-sm-table-cell">
+                            <th style={{width: '15%', whiteSpace:'nowrap'}} className="d-none d-sm-table-cell">
                                 Category
                                 <button onClick={() => handleSortBy('category-descending')}>
                                     <FontAwesomeIcon icon={
@@ -214,7 +214,7 @@ const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProp
                                 </button>
                             </th>
                             <th style={{width: '5%'}}></th>
-                            <th style={{width: '20%'}} className="d-none d-md-table-cell">
+                            <th style={{width: '20%', whiteSpace:'nowrap'}} className="d-none d-md-table-cell">
                                 Release Date
                                 <button onClick={() => handleSortBy('date-descending')}>
                                     <FontAwesomeIcon icon={
