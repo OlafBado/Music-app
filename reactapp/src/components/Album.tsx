@@ -24,10 +24,10 @@ const Album = ({ song, favourites, setFavourites, active }: AlbumProps) => {
 
     return (
                 <tr className={active && hide ? 'act' : ''}>
-                    <td>{song.number}</td>
+                    <td data-label='number'>{song.number}</td>
                     <td>
                         <div className='album-img-container'>
-                            <img alt='' src={song["im:image"][0].label}/>
+                            <img alt='' src={song["im:image"][2].label}/>
                             <a href={song.link.attributes.href} target="_blank" rel="noreferrer">
                                 <FontAwesomeIcon
                                     icon={faPlay}
@@ -37,9 +37,17 @@ const Album = ({ song, favourites, setFavourites, active }: AlbumProps) => {
         
                         </div>
                     </td>
+                    <td className='hidden-cell'>
+                        <div>
+                            <span><b>Album:</b> {song["im:name"].label}</span>
+                            <span><b>Artist:</b> {song["im:artist"].label}</span>
+                            <span><b>Category:</b> {song.category.attributes.label}</span>
+                            <span><b>ReleaseDate:</b> {song["im:releaseDate"].attributes.label}</span>
+                        </div>
+                    </td>
                     <td>{song["im:name"].label}</td>
                     <td>{song["im:artist"].label}</td>
-                    <td className="d-none d-sm-table-cell">{song.category.attributes.label}</td>
+                    <td>{song.category.attributes.label}</td>
                     <td className='td-svg' data-testid="td-svg">
                     {favourites.includes(song.id.attributes["im:id"]) ?
                         <FontAwesomeIcon
@@ -62,7 +70,7 @@ const Album = ({ song, favourites, setFavourites, active }: AlbumProps) => {
 
 
                     </td>
-                    <td className="d-none d-md-table-cell">{song["im:releaseDate"].attributes.label}</td>
+                    <td>{song["im:releaseDate"].attributes.label}</td>
                 </tr>
     )
 }

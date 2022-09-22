@@ -143,7 +143,8 @@ const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProp
                 <Table variant='dark' hover>
                     <thead>
                         <tr>
-                            <th style={{minWidth: '55px' }}>
+                            <th>
+                                <span>
                                 #
                                 <button onClick={() => handleSortBy('reverse')}>
                                     <FontAwesomeIcon icon={
@@ -155,13 +156,15 @@ const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProp
                                         } 
                                     />
                                 </button>
+                                </span>
                             </th>
-                            <th className='but' style={{minWidth: '10%'}}>
+                            <th className='but'>
                                 {transition((style, item) => 
                                     item ? <animated.button onClick={() => handleSortBy('default')} className='reset-button' style={style}>Reset</animated.button> : ''
                                 )}
                             </th>
-                            <th style={{width: '25%'}}>
+                            <th>
+                                <span>
                                 Album
                                 <button onClick={() => handleSortBy('album-descending')}>
                                     <FontAwesomeIcon icon={
@@ -177,9 +180,12 @@ const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProp
                                         } 
                                     />
                                 </button>
+                                </span>
                             </th>
-                            <th style={{width: '25%'}}>
-                                Artist
+                            <th>
+                                <span>
+                                    Artist    
+                                
                                 <button onClick={() => handleSortBy('artist-descending')}>
                                     <FontAwesomeIcon icon={
                                             sortBy === 'artist-descending' 
@@ -194,8 +200,10 @@ const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProp
                                         } 
                                     />
                                 </button>
+                                </span>
                             </th>
-                            <th style={{width: '15%', whiteSpace:'nowrap'}} className="d-none d-sm-table-cell">
+                            <th style={{ whiteSpace:'nowrap'}}>
+                                <span>
                                 Category
                                 <button onClick={() => handleSortBy('category-descending')}>
                                     <FontAwesomeIcon icon={
@@ -212,9 +220,11 @@ const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProp
                                         data-testid="svgCategory"
                                     />
                                 </button>
+                                </span>
                             </th>
-                            <th style={{width: '5%'}}></th>
-                            <th style={{width: '20%', whiteSpace:'nowrap'}} className="d-none d-md-table-cell">
+                            <th></th>
+                            <th style={{whiteSpace:'nowrap'}}>
+                                <span>
                                 Release Date
                                 <button onClick={() => handleSortBy('date-descending')}>
                                     <FontAwesomeIcon icon={
@@ -230,6 +240,7 @@ const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProp
                                         } 
                                     />
                                 </button>
+                                </span>
                             </th>
                         </tr>
                     </thead>
