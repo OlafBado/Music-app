@@ -9,6 +9,14 @@ export interface LabeledItem {
     label: string;
     attributes: AttributeDetails;
     }
+
+export interface SortIconProps {
+    sortBy: String;
+    handleSortBy: (by: string) => void
+    }
+
+export interface SortDropdownProps extends SortIconProps {
+}
   
 export interface AttributeDetails {
     ["im:id"]: string;

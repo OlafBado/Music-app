@@ -82,7 +82,16 @@ td {
     vertical-align: middle;
 }
 
-.td-svg {
+th {
+    white-space: nowrap;
+}
+
+span button {
+    color: white;
+    font-weight: 700;
+}
+
+.td-svg, td:nth-child(1) {
     text-align: center;
 }
 
@@ -208,7 +217,7 @@ th button svg {
     border-radius: 12px;
 }
 
-.hidden-cell {
+.hidden-cell, .dropdown {
     display: none;
 }
 
@@ -222,21 +231,46 @@ th button svg {
     th:nth-child(5), th:nth-child(6), th:nth-child(7) {
         display: none;
     }
+    th:nth-child(3) {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
     .hidden-cell {
         display: flex;
         flex-direction: row;
         min-height: 117.5px;
     }
-    .album-img-container img {
+    .album-img-container img, .album-img-container {
         height: 100px;
         width: 100px;
     }
-    .album-img-container {
-        width: 100px;
-        height: 100px;
-    }
+
     .hidden-cell div {
         display: flex;
         flex-direction: column;
+    }
+    .dropdown {
+        display: block;
+        position: relative;
+    }
+    .dropdown > svg {
+        font-size: 2.25rem;
+    }
+    .Dropdown-menu {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        left: 0px;
+        top: calc(100% + .25rem);
+        background-color: gray;
+        padding: .75rem;
+        border-radius: .25rem;
+        box-shadow: 0 2px 5px 0 rgb(0, 0, 0, .3);
+        opacity: 1;
+    }
+    .Dropdown-menu > button {
+        text-align: start;
+        color: white;
     }
 }

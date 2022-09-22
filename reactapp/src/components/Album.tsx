@@ -24,7 +24,7 @@ const Album = ({ song, favourites, setFavourites, active }: AlbumProps) => {
 
     return (
                 <tr className={active && hide ? 'act' : ''}>
-                    <td data-label='number'>{song.number}</td>
+                    <td>{song.number}</td>
                     <td>
                         <div className='album-img-container'>
                             <img alt='' src={song["im:image"][2].label}/>
@@ -66,9 +66,6 @@ const Album = ({ song, favourites, setFavourites, active }: AlbumProps) => {
                             className='svgEmptyElement'
                         />
                     }
-
-
-
                     </td>
                     <td>{song["im:releaseDate"].attributes.label}</td>
                 </tr>

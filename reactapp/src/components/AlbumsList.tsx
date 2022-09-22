@@ -1,16 +1,21 @@
 import Album from './Album'
+import SortDropdown from './SortDropdown'
+import SortIconNumber from './sortIcons/SortIconNumber'
+import SortIconAlbum from './sortIcons/SortIconAlbum'
+import SortIconArtist from './sortIcons/SortIconArtist'
+import SortIconCategory from './sortIcons/SortIconCategory'
+import SortIconReleaseDate from './sortIcons/SortIconReleaseDate'
 import { Container } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import { AlbumsListProps, Song } from '../store';
 import { useState } from 'react';
 import { albumsDescending, albumsAscending, artistDescending, artistAscending, categoryDescending, categoryAscending, dateDescending, dateAscending } from '../utils/sort/sort'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faSort, faSortDown, faSortUp } from "@fortawesome/free-solid-svg-icons"
 import { animated, useTransition } from 'react-spring';
 
 const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProps) => {
     const [sortBy, setSortBy] = useState<String>('default')
     const [isVisible, setIsVisible] = useState<Boolean>(false)
+    const [isOpen, setIsOpen] = useState<Boolean>(false)
 
     const transition = useTransition(isVisible, {
         from: {  y:-80, opacity: 0 },
@@ -145,17 +150,7 @@ const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProp
                         <tr>
                             <th>
                                 <span>
-                                #
-                                <button onClick={() => handleSortBy('reverse')}>
-                                    <FontAwesomeIcon icon={
-                                            sortBy === 'default' 
-                                            ?
-                                            faSortDown
-                                            :
-                                            faSortUp
-                                        } 
-                                    />
-                                </button>
+                                    <SortIconNumber sortBy={sortBy} handleSortBy={handleSortBy}/>
                                 </span>
                             </th>
                             <th className='but'>
@@ -165,81 +160,24 @@ const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProp
                             </th>
                             <th>
                                 <span>
-                                Album
-                                <button onClick={() => handleSortBy('album-descending')}>
-                                    <FontAwesomeIcon icon={
-                                            sortBy === 'album-descending' 
-                                            ?
-                                            faSortUp
-                                            :
-                                            sortBy === 'album-ascending' 
-                                            ?
-                                            faSortDown
-                                            :
-                                            faSort
-                                        } 
-                                    />
-                                </button>
+                                    <SortIconAlbum sortBy={sortBy} handleSortBy={handleSortBy}/>
+                                </span>
+                                <SortDropdown sortBy={sortBy} handleSortBy={handleSortBy} />
+                            </th>
+                            <th>
+                                <span>
+                                    <SortIconArtist sortBy={sortBy} handleSortBy={handleSortBy}/>
                                 </span>
                             </th>
                             <th>
                                 <span>
-                                    Artist    
-                                
-                                <button onClick={() => handleSortBy('artist-descending')}>
-                                    <FontAwesomeIcon icon={
-                                            sortBy === 'artist-descending' 
-                                            ?
-                                            faSortUp
-                                            :
-                                            sortBy === 'artist-ascending' 
-                                            ?
-                                            faSortDown
-                                            :
-                                            faSort
-                                        } 
-                                    />
-                                </button>
-                                </span>
-                            </th>
-                            <th style={{ whiteSpace:'nowrap'}}>
-                                <span>
-                                Category
-                                <button onClick={() => handleSortBy('category-descending')}>
-                                    <FontAwesomeIcon icon={
-                                            sortBy === 'category-descending' 
-                                            ?
-                                            faSortUp
-                                            :
-                                            sortBy === 'category-ascending' 
-                                            ?
-                                            faSortDown
-                                            :
-                                            faSort
-                                        }
-                                        data-testid="svgCategory"
-                                    />
-                                </button>
+                                    <SortIconCategory sortBy={sortBy} handleSortBy={handleSortBy}/>
                                 </span>
                             </th>
                             <th></th>
-                            <th style={{whiteSpace:'nowrap'}}>
+                            <th>
                                 <span>
-                                Release Date
-                                <button onClick={() => handleSortBy('date-descending')}>
-                                    <FontAwesomeIcon icon={
-                                            sortBy === 'date-descending' 
-                                            ?
-                                            faSortUp
-                                            :
-                                            sortBy === 'date-ascending' 
-                                            ?
-                                            faSortDown
-                                            :
-                                            faSort
-                                        } 
-                                    />
-                                </button>
+                                    <SortIconReleaseDate sortBy={sortBy} handleSortBy={handleSortBy}/>
                                 </span>
                             </th>
                         </tr>
