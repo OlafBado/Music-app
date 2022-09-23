@@ -15,7 +15,6 @@ import { animated, useTransition } from 'react-spring';
 const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProps) => {
     const [sortBy, setSortBy] = useState<String>('default')
     const [isVisible, setIsVisible] = useState<Boolean>(false)
-    const [isOpen, setIsOpen] = useState<Boolean>(false)
 
     const transition = useTransition(isVisible, {
         from: {  y:-80, opacity: 0 },
@@ -162,7 +161,7 @@ const AlbumsList = ({ songs, favourites, setFavourites, active }: AlbumsListProp
                                 <span>
                                     <SortIconAlbum sortBy={sortBy} handleSortBy={handleSortBy}/>
                                 </span>
-                                <SortDropdown sortBy={sortBy} handleSortBy={handleSortBy} />
+                                <SortDropdown sortBy={sortBy} handleSortBy={handleSortBy}/>
                             </th>
                             <th>
                                 <span>

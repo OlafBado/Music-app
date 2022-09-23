@@ -225,10 +225,7 @@ th button svg {
     td svg {
         opacity: 1;
     }
-    thead span, td:nth-child(4), td:nth-child(5), td:nth-child(6), td:nth-child(8){
-        display: none;
-    }
-    th:nth-child(5), th:nth-child(6), th:nth-child(7) {
+    thead span,th:nth-child(5), th:nth-child(6), th:nth-child(7), td:nth-child(4), td:nth-child(5), td:nth-child(6), td:nth-child(8){
         display: none;
     }
     th:nth-child(3) {
@@ -245,7 +242,6 @@ th button svg {
         height: 100px;
         width: 100px;
     }
-
     .hidden-cell div {
         display: flex;
         flex-direction: column;
@@ -267,6 +263,7 @@ th button svg {
         padding: .75rem;
         border-radius: .25rem;
         box-shadow: 0 2px 5px 0 rgb(0, 0, 0, .3);
+        gap: .5rem;
     }
     .Dropdown-menu > button {
         text-align: start;
@@ -276,6 +273,6 @@ th button svg {
 
 @media (max-width: 377px) {
     .hidden-cell div {
-        width: 100px;
+        width: 80px;
     }
 }
