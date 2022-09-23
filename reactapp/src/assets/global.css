@@ -267,10 +267,15 @@ th button svg {
         padding: .75rem;
         border-radius: .25rem;
         box-shadow: 0 2px 5px 0 rgb(0, 0, 0, .3);
-        opacity: 1;
     }
     .Dropdown-menu > button {
         text-align: start;
         color: white;
+    }
+}
+
+@media (max-width: 377px) {
+    .hidden-cell div {
+        width: 100px;
     }
 }
