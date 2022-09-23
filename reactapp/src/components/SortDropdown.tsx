@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons"
 import { SortDropdownProps } from "../store"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { animated, useTransition } from 'react-spring';
 import SortIconNumber from './sortIcons/SortIconNumber'
 import SortIconAlbum from './sortIcons/SortIconAlbum'
@@ -11,14 +11,14 @@ import SortIconReleaseDate from './sortIcons/SortIconReleaseDate'
 
 const SortDropdown = ({ sortBy, handleSortBy }: SortDropdownProps) => {
     const [isOpen, setIsOpen] = useState<Boolean>(false)
+    const btnRef = useRef(null)
 
     useEffect(() => {
         
         const closeDropdown = (e: MouseEvent) => {
             const element = e.composedPath()[0] as HTMLElement
-            const tagName = element.tagName
-            console.log(tagName)
-            if (tagName !== 'path') {
+            console.log(element.className)
+            if (element !== btnRef.current && element.className !== 'Dropdown-menu') {
                setIsOpen(false)
             }
         }
@@ -30,14 +30,16 @@ const SortDropdown = ({ sortBy, handleSortBy }: SortDropdownProps) => {
     }, [])
 
     const transition = useTransition(isOpen, {
-        from: {  y:-80, opacity: 0 },
-        enter: { y:0, opacity: 1 },
-        leave: { y:-80, opacity: 0 }
+        from: { opacity:0 },
+        enter: { opacity:1 },
+        leave: { opacity:0 },
     })
 
     return (
-        <div className="dropdown">
-           <FontAwesomeIcon onClick={() => setIsOpen(!isOpen)} className='svg-ellipsis' icon={faEllipsis}/>
+        <div className="dropdown" onClick={() => setIsOpen(!isOpen)}>
+            <button ref={btnRef}>
+                Sort by:
+            </button>
            {transition((style, item) => 
             item ?
             <animated.div className="Dropdown-menu" style={style}>

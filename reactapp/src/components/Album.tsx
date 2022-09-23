@@ -5,7 +5,6 @@ import { AlbumProps } from '../store'
 import { useState } from 'react'
 
 const Album = ({ song, favourites, setFavourites, active }: AlbumProps) => {
-
     const [hide,setHide] = useState<Boolean>(false)
     
     const handleFavourites = (id: string) => {

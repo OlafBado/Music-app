@@ -15,8 +15,7 @@ export interface SortIconProps {
     handleSortBy: (by: string) => void
     }
 
-export interface SortDropdownProps extends SortIconProps {
-}
+export interface SortDropdownProps extends SortIconProps {}
   
 export interface AttributeDetails {
     ["im:id"]: string;
@@ -167,6 +166,26 @@ export const mockedSongs = [
                     term: '11',
                     href: '11'
                 }
+            },
+            {
+                label: "test",
+                attributes: {
+                    ["im:id"] : '123',
+                    label: "11",
+                    scheme: '11',
+                    term: '11',
+                    href: '11'
+                }
+            },
+            {
+                label: "test",
+                attributes: {
+                    ["im:id"] : '123',
+                    label: "11",
+                    scheme: '11',
+                    term: '11',
+                    href: '11'
+                }
             }
         ],
         ["im:name"]: {
@@ -245,6 +264,26 @@ export const mockedSong =
             }
         },
         ["im:image"]: [
+            {
+                label: "test",
+                attributes: {
+                    ["im:id"] : '123',
+                    label: "11",
+                    scheme: '11',
+                    term: '11',
+                    href: '11'
+                }
+            },
+            {
+                label: "test",
+                attributes: {
+                    ["im:id"] : '123',
+                    label: "11",
+                    scheme: '11',
+                    term: '11',
+                    href: '11'
+                }
+            },
             {
                 label: "test",
                 attributes: {
