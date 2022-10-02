@@ -1,7 +1,7 @@
 <h1>Music app</h1>
 <p>List top 100 albums based on json feed provided by Apple.</p>
 <p>Visit this site by clicking on the link: https://music-brand-app.netlify.app/</p>
-<p><i>Mobile friendly</i></p>
+<b><i>Mobile friendly</i></b>
 </br>
 <h2>Functionalities</h2>
 <ul>
